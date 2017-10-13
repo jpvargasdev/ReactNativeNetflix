@@ -34,11 +34,13 @@ const Header = props => (
             />
         </TouchableWithoutFeedback>
         <Text style={styles.logo}>NETFLIX</Text>
+        <TouchableWithoutFeedback onPress={()=> props.navigator.push({ident:'Search'})}>
         <Icon
             name="search"
             color="white"
             size={25}
         />
+        </TouchableWithoutFeedback>
     </View>
 )
 

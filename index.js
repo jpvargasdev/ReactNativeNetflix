@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './src/App';
+import indexApp from './src/App';
 
-AppRegistry.registerComponent('NetflixApp', () => App);
+AppRegistry.registerComponent('NetflixApp', () => indexApp);

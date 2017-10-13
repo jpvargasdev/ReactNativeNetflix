@@ -8,7 +8,7 @@ import {
 import Slide from './components/Slider'
 import List from './components/List'
 import Header from './components/Header'
-
+import Search from './components/Search'
 import SideMenu from 'react-native-side-menu'
 import Menu from './components/Menu'
 
@@ -39,13 +39,13 @@ class App extends Component {
           onChange={(isOpen)=> this._updateMenu(isOpen)}>
 
           <View style={styles.container}>
-            <Header toggle = {this.toggle.bind(this)}/>
+            <Header navigator={this.props.navigator} toggle = {this.toggle.bind(this)}/>
             <Slide/>
             <List/>
           </View>
         </SideMenu>
       </View>
-    );
+    )
   }
 }
 
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'black',
     flex:1
-  }
+  },
 })
 
 export default App
