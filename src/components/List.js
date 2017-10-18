@@ -4,42 +4,25 @@ import {
     View,
     StyleSheet,
     Image,
-    FlatList
+    FlatList,
+    TouchableWithoutFeedback
 } from 'react-native'
 
-const shows_first = [
-    {
-        key:1,
-        name:'Suits',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/0/2432.jpg'
-    },
-    {
-        key:2,
-        name:'Modern Family',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/0/628.jpg'
-    },
-    {
-        key:3,
-        name:'The Flash',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/78/195988.jpg'
-     },
-     {
-        key:4,
-        name:'Supergirl',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/83/209955.jpg'
-     }
-]
+import {getTwoItems} from '../api/api'
 
 class List extends Component {
 
     _renderItem(item){
-        console.log(item)
+        const {navigate} = this.props.navigation
         return(
-            <Image style={{height:180, width:120, marginLeft: 5}} source={{uri:item.image}}/>
+            <TouchableWithoutFeedback onPress={() => navigate('Details', {item: item})}>
+                <Image style={{height:180, width:120, marginLeft: 5}} source={{uri:item.image}}/>
+            </TouchableWithoutFeedback>
         )
     }
 
     render(){
+        console.log(this.props)
         return(
             <View >
                 <View>
@@ -47,7 +30,7 @@ class List extends Component {
                     <FlatList
                         horizontal = {true}
                         inverted={false}
-                        data = {shows_first}
+                        data = {getTwoItems[0]}
                         renderItem = {({item}) => this._renderItem(item)}
                     />
                 </View>
@@ -56,7 +39,7 @@ class List extends Component {
                     <FlatList
                         horizontal = {true}
                         inverted={false}
-                        data = {shows_first}
+                        data = {getTwoItems[1]}
                         renderItem = {({item}) => this._renderItem(item)}
                     />
                 </View>

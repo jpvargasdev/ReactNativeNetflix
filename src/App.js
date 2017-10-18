@@ -11,6 +11,7 @@ import Header from './components/Header'
 import Search from './components/Search'
 import SideMenu from 'react-native-side-menu'
 import Menu from './components/Menu'
+import {StackNavigator, addNavigationHelpers} from 'react-navigation'
 
 class App extends Component {
   
@@ -20,6 +21,7 @@ class App extends Component {
       isOpen: false
     }
   }
+
   toggle(){
     this.setState({
         isOpen:!this.state.isOpen  
@@ -39,9 +41,9 @@ class App extends Component {
           onChange={(isOpen)=> this._updateMenu(isOpen)}>
 
           <View style={styles.container}>
-            <Header navigator={this.props.navigator} toggle = {this.toggle.bind(this)}/>
+            <Header navigation={this.props.navigation} toggle = {this.toggle.bind(this)}/>
             <Slide/>
-            <List/>
+            <List navigation={this.props.navigation}/>
           </View>
         </SideMenu>
       </View>

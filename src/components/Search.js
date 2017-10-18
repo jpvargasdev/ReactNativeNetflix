@@ -13,28 +13,9 @@ import {
 
 const {width,height} = Dimensions.get('window')
 import Icon from 'react-native-vector-icons/dist/FontAwesome'
-const shows_first = [
-    {
-        key:1,
-        name:'Suits',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/0/2432.jpg'
-    },
-    {
-        key:2,
-        name:'Modern Family',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/0/628.jpg'
-    },
-    {
-        key:3,
-        name:'The Flash',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/78/195988.jpg'
-     },
-     {
-        key:4,
-        name:'Supergirl',
-        image:'https://static.tvmaze.com/uploads/images/medium_portrait/83/209955.jpg'
-     }
-]
+
+import {getAll} from '../api/api'
+
 export default class Search extends Component {
     constructor(props){
         super(props)
@@ -44,7 +25,8 @@ export default class Search extends Component {
         }
     }
     filter(text){
-        const newData = shows_first.filter(function(item){
+        const data = getAll()
+        const newData = data.filter(function(item){
             const itemData = item.name.toUpperCase()
             const textData = text.toUpperCase()
             return itemData.indexOf(textData) > -1
@@ -62,6 +44,10 @@ export default class Search extends Component {
         return(
             <Image key={item.key} style ={styles.image} source={{uri: item.image}}/>
         )
+    }
+    _back(){
+        const {goBack} = this.props.navigation
+        goBack()
     }
     render(){
         return(
@@ -94,7 +80,7 @@ export default class Search extends Component {
                     </TouchableWithoutFeedback>
                     : null}
                         
-                    <TouchableWithoutFeedback style={styles.cancelButton}>
+                    <TouchableWithoutFeedback style={styles.cancelButton} onPress={() => this._back()}>
                         <View style={styles.containerButton}>
                             <Text style={styles.cancelButtonText}>Cancel</Text>
                         </View>

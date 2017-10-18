@@ -24,25 +24,28 @@ const styles = StyleSheet.create({
     }
 })
 
-const Header = props => (
-    <View style = {styles.container}>
-        <TouchableWithoutFeedback onPress={() => props.toggle()}>
+const Header = props => {
+    const {navigate} = props.navigation
+    return (
+        <View style = {styles.container}>
+            <TouchableWithoutFeedback onPress={() => props.toggle()}>
+                <Icon
+                    name="bars"
+                    color="white"
+                    size={25}
+                />
+            </TouchableWithoutFeedback>
+            <Text style={styles.logo}>NETFLIX</Text>
+            <TouchableWithoutFeedback onPress={()=> navigate('Search')}>
             <Icon
-                name="bars"
+                name="search"
                 color="white"
                 size={25}
             />
-        </TouchableWithoutFeedback>
-        <Text style={styles.logo}>NETFLIX</Text>
-        <TouchableWithoutFeedback onPress={()=> props.navigator.push({ident:'Search'})}>
-        <Icon
-            name="search"
-            color="white"
-            size={25}
-        />
-        </TouchableWithoutFeedback>
-    </View>
-)
+            </TouchableWithoutFeedback>
+        </View>
+    )
+}
 
 
 
