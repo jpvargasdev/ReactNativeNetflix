@@ -9,13 +9,6 @@ import Video from './components/VideoPlayerView'
 
 
 const IndexApp = StackNavigator({
-  Video: {
-    screen: Video,
-    headerMode: 'none',
-    navigationOptions: {
-      header: null
-    }
-  },
   Home: {
     screen: App,
     headerMode: 'none',
@@ -36,6 +29,9 @@ const IndexApp = StackNavigator({
     navigationOptions: {
       header: null
     }  
+  },
+  Video: {
+    screen: Video,
   },
   
 }, {
